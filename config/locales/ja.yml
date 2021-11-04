@@ -1,0 +1,6 @@
+ja:
+    enums:
+      user:
+        type:
+          saver: "節約家"
+          spender: "浪費家"
