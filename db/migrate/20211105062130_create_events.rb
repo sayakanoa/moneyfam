@@ -3,9 +3,9 @@ class CreateEvents < ActiveRecord::Migration[5.2]
     create_table :events do |t|
 
       t.integer :user_id
-      t.string :title
+      t.string :title, null: false, default: ""
       t.string :body
-      t.datetime :start_time
+      t.date :start_time
 
       t.timestamps
     end

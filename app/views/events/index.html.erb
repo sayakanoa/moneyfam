@@ -1,15 +1,16 @@
 <h1>カレンダー画面</h1>
 
 <%= month_calendar events: @events do |date, events| %>
-    <%= date.day %>
-<% end %>
+<%= date.day %>
 
 
-<% @events.each do |event| %>
+<% events.each do |event| %>
     <div>
       <%= event.title %>
+      <%= event.body %>
     </div>
 <% end %>
 
+<% end %>
 
 <%= link_to 'イベント追加', new_event_path %>
