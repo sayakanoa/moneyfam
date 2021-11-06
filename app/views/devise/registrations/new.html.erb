@@ -32,13 +32,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :type, '価値観' %><br />
-    <%= f.select :type, {'節約家': 0, '浪費家': 1}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+    <%= f.label :money_type, '価値観' %><br />
+    <%= f.select :money_type, User.money_types_i18n.keys.map {|k| [User.money_types_i18n[k], k]} %>
   </div>
 
   <div class="actions">
     <%= f.submit "登録" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+<% end %>

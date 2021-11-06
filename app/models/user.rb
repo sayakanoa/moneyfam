@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  enum type: { saver: 0, spender: 1 }
+  enum money_type: { saver: 0, spender: 1 }
 end
