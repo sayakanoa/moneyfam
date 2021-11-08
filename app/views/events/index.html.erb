@@ -7,7 +7,8 @@
 <% events.each do |event| %>
     <div>
       <%= event.title %>
-      <%= event.body %>
+      <%= event.body %></br>
+      <%= link_to '削除', event_path(event.id), method: :delete %>
     </div>
 <% end %>
 
