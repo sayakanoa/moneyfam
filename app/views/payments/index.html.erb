@@ -1,0 +1,31 @@
+<h1>家計簿一覧画面</h1>
+
+<% @payments.each do |payment| %>
+
+<p>年月</p>
+<%= payment.month.strftime("%Y年%-m月　") %>
+
+<p>家賃</p>
+<%= payment.house %>
+
+<p>生活費</p>
+<%= payment.life %>
+
+<p>食費</p>
+<%= payment.food %>
+
+<p>交際費</p>
+<%= payment.enjoy %>
+
+<p>貯金</p>
+<%= payment.saving %>
+
+<p>資産運用</p>
+<%= payment.investing %>
+
+<p>その他</p>
+<%= payment.other %>
+
+<%= link_to '削除', payment_path(payment.id), method: :delete %>
+
+<% end %>
