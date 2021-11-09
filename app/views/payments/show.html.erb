@@ -1,2 +1,38 @@
-<h1>Payments#show</h1>
-<p>Find me in app/views/payments/show.html.erb</p>
+<table>
+    <tr>
+        <th></th>
+        <th><%= @payment.month.strftime("%-m月") %></th>
+    </tr>
+    <tr>
+        <td>家賃</td>
+        <td><%= @payment.house %></td>
+    </tr>
+    <tr>
+        <td>生活費</td>
+        <td><%= @payment.life %><td>
+    </tr>
+    <tr>
+        <td>食費</td>
+        <td><%= @payment.food %></td>
+    </tr>
+    <tr>
+        <td>交際費</td>
+        <td><%= @payment.enjoy %></td>
+    </tr>
+    <tr>
+        <td>貯金</td>
+        <td><%= @payment.saving %></td>
+    </tr>
+    <tr>
+        <td>資産運用</td>
+        <td><%= @payment.investing %></td>
+    </tr>
+    <tr>
+        <td>その他</td>
+        <td><%= @payment.other %></td>
+    </tr>
+    <tr>
+        <td>合計金額<td>
+        <td></td>
+    </tr>
+</table>
