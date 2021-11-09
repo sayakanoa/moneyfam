@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :events
   resources :payments
+  resources :post_comments, only: [:create, :destroy]
 
 end

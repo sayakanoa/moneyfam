@@ -15,3 +15,15 @@
 <% end %>
 
 <%= link_to 'イベント追加', new_event_path %>
+
+<h4>コメント</h4>
+<% @post_comments.each do |post_comment| %>
+  <%= post_comment.comment %>
+  <%= link_to "削除", post_comment_path(post_comment.id), method: :delete %>
+<% end %>
+
+
+<%= form_with(model: @post_comment, local: true) do |f|%>
+  <%= f.text_area :comment, rows:"7", placeholder:"コメントをここに記入してください。" %>
+  <%= f.submit "送信"%>
+<% end %>

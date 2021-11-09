@@ -17,6 +17,7 @@ class PaymentsController < ApplicationController
 
   def show
     @payment = Payment.find(params[:id])
+    @payment_graph = Payment.pluck(:house, :food)
   end
 
 

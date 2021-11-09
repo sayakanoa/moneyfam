@@ -6,6 +6,8 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @post_comment = PostComment.new
+    @post_comments = PostComment.all
   end
 
   def create
