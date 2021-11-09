@@ -13,11 +13,24 @@ class PaymentsController < ApplicationController
 
   def index
     @payments = current_user.payments.all
+    @lists = {id: [], month: [], house: [], life: [], food: [], enjoy: [], saving: [], investing: [], other: [], sum: []}
+    @payments.each do |pt|
+      @lists[:id]    << pt.id
+      @lists[:month] << pt.month
+      @lists[:house] << pt.house
+      @lists[:life]  << pt.life
+      @lists[:food]  << pt.food
+      @lists[:enjoy] << pt.enjoy
+      @lists[:saving] << pt.saving
+      @lists[:investing] << pt.investing
+      @lists[:other] << pt.other
+      @lists[:sum]   << pt.house + pt.life + pt.food + pt.enjoy + pt.saving + pt.investing + pt.other
+    end
   end
 
   def show
     @payment = Payment.find(params[:id])
-    @payment_graph = Payment.pluck(:house, :food)
+    @payment_graph = Payment.pluck(:house, :life, :food)
   end
 
 

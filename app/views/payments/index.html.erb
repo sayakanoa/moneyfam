@@ -1,42 +1,66 @@
-<% @payments.each do |payment| %>
-
 <table>
     <tr>
         <th>年月</th>
-        <td>
-            <%= link_to payment_path(payment.id) do %>
-                <%= payment.month.strftime("%-m月") %>
+
+            <% @lists[:month].zip(@lists[:id]).each do |m, id| %>
+            <th>
+            <%= link_to payment_path(id) do %>
+                <%= m.strftime("%-m月") %>
             <% end %>
-        </td>
+            </th>
+            <% end %>
+
     </tr>
     <tr>
-        <td>家賃</td>
-        <td><%= payment.house %></td>
+        <th>家賃</th>
+        <%  @lists[:house].each do |h| %>
+        <td><%= h %></td>
+        <% end %>
     </tr>
     <tr>
         <td>生活費</td>
-        <td><%= payment.life %></td>
+        <%  @lists[:life].each do |l| %>
+        <td><%= l %></td>
+        <% end %>
     <tr>
     <tr>
         <td>食費</td>
-        <td><%= payment.food %></td>
+        <%  @lists[:food].each do |f| %>
+        <td><%= f %></td>
+        <% end %>
     </tr>
     <tr>
         <td>交際費</td>
-        <td><%= payment.enjoy %></td>
+        <%  @lists[:enjoy].each do |e| %>
+        <td><%= e %></td>
+        <% end %>
     </tr>
     <tr>
         <td>貯金</td>
-        <td><%= payment.saving %></td>
+        <%  @lists[:saving].each do |s| %>
+        <td><%= s %></td>
+        <% end %>
     </tr>
     <tr>
         <td>資産運用</td>
-        <td><%= payment.investing %></td>
+        <%  @lists[:investing].each do |i| %>
+        <td><%= i %></td>
+        <% end %>
     </tr>
     <tr>
         <td>その他</td>
-        <td><%= payment.other %></td>
+        <%  @lists[:other].each do |o| %>
+        <td><%= o %></td>
+        <% end %>
     </tr>
+    <tr>
+        <th>sum</th>
+        <%  @lists[:sum].each do |s| %>
+        <td><%= s %></td>
+        <% end %>
+    </tr>
+  
 
 </table>
-<% end %>
+
+ <%= @lists[:house].inject(&:+) %>
