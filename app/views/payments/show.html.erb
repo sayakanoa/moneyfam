@@ -4,39 +4,39 @@
         <th><%= @payment.month.strftime("%-m月") %></th>
     </tr>
     <tr>
-        <td>家賃</td>
+        <th>家賃</th>
         <td><%= @payment.house %></td>
     </tr>
     <tr>
-        <td>生活費</td>
+        <th>生活費</th>
         <td><%= @payment.life %><td>
     </tr>
     <tr>
-        <td>食費</td>
+        <th>食費</th>
         <td><%= @payment.food %></td>
     </tr>
     <tr>
-        <td>交際費</td>
+        <th>交際費</th>
         <td><%= @payment.enjoy %></td>
     </tr>
     <tr>
-        <td>貯金</td>
+        <th>貯金</th>
         <td><%= @payment.saving %></td>
     </tr>
     <tr>
-        <td>資産運用</td>
+        <th>資産運用</th>
         <td><%= @payment.investing %></td>
     </tr>
     <tr>
-        <td>その他</td>
+        <th>その他</th>
         <td><%= @payment.other %></td>
     </tr>
     <tr>
-        <td>合計金額<td>
-        <td></td>
+        <th>合計金額</th>
+        <td><%= @sum %></td>
     </tr>
 </table>
 
 <%= link_to '削除する', payment_path(@payment.id), method: :delete %>
 
-<%= pie_chart @graph_data %>
+<%= pie_chart @graph_data, colors: ["#191970",	"#D6FF58",	"#60EEFF",	"#5D99FF",	"#A16EFF",	"#FF69A3",	"#FF773E"] %>

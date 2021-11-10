@@ -41,7 +41,7 @@ class PaymentsController < ApplicationController
       資産運用: @payment.investing,
       その他: @payment.other
     }
-
+    @sum = @payment.house + @payment.life + @payment.food + @payment.enjoy + @payment.saving + @payment.investing + @payment.other
   end
 
 
