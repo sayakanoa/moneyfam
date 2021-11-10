@@ -37,4 +37,6 @@
     </tr>
 </table>
 
-<%= pie_chart @payment_graph %>
+<%= link_to '削除する', payment_path(@payment.id), method: :delete %>
+
+<%= pie_chart @graph_data %>

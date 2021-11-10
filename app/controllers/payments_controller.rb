@@ -12,8 +12,10 @@ class PaymentsController < ApplicationController
   end
 
   def index
-    @payments = current_user.payments.all
+    #データを入れる器を作る
     @lists = {id: [], month: [], house: [], life: [], food: [], enjoy: [], saving: [], investing: [], other: [], sum: []}
+    #器に入れるデータ
+    @payments = current_user.payments.all
     @payments.each do |pt|
       @lists[:id]    << pt.id
       @lists[:month] << pt.month
@@ -30,7 +32,16 @@ class PaymentsController < ApplicationController
 
   def show
     @payment = Payment.find(params[:id])
-    @payment_graph = Payment.pluck(:house, :life, :food)
+    @graph_data = {
+      家賃: @payment.house,
+      生活費: @payment.life,
+      食費: @payment.food,
+      交際費: @payment.enjoy,
+      貯金: @payment.saving,
+      資産運用: @payment.investing,
+      その他: @payment.other
+    }
+
   end
 
 
