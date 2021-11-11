@@ -1,1 +1,31 @@
 <h1>欲しいものリスト</h1>
+
+<% @wants.each do |w| %>
+<%= w.name %>
+<%= w.price %>円
+<%= link_to '削除', want_path(w.id), method: :delete %>
+<% end %>
+
+
+<%= form_with model:@want, local:true do |f| %>
+
+<%= f.date_select :month, discard_year:true, discard_day:true %>
+
+<%= f.label :欲しいもの　%>
+<%= f.text_field :name %>
+
+<%= f.label :値段　%>
+<%= f.text_field :price %>円
+
+<%= f.label :既に持っている %>
+<%= f.check_box :have_state, {class: "check_box"}, true, false %>
+
+<%= f.label :買う %>
+<%= f.check_box :buy_state, {class: "check_box"}, true, false %>
+
+<%= f.label :期限　%>
+<%= f.date_field :limit_date %>
+
+<%= f.submit '保存 '%>
+
+<% end %>

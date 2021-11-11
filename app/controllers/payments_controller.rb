@@ -32,6 +32,7 @@ class PaymentsController < ApplicationController
 
   def show
     @payment = Payment.find(params[:id])
+    #空箱にデータを直接入れる
     @graph_data = {
       家賃: @payment.house,
       生活費: @payment.life,
@@ -41,6 +42,7 @@ class PaymentsController < ApplicationController
       資産運用: @payment.investing,
       その他: @payment.other
     }
+
     @sum = @payment.house + @payment.life + @payment.food + @payment.enjoy + @payment.saving + @payment.investing + @payment.other
   end
 
