@@ -1,31 +1,34 @@
-<h1>欲しいものリスト</h1>
+<h1>購入検討リスト</h1>
 
-<% @wants.each do |w| %>
-<%= w.name %>
-<%= w.price %>円
-<%= link_to '削除', want_path(w.id), method: :delete %>
-<% end %>
+<%= link_to '新規作成', new_want_path %>
 
 
-<%= form_with model:@want, local:true do |f| %>
+<table>
+    <tr>
+        <th>商品名</th>
+        <th>値段</th>
+        <th>優先度</th>
+        <th>検討期限</th>
+        <th></th>
+    </tr>
 
-<%= f.date_select :month, discard_year:true, discard_day:true %>
 
-<%= f.label :欲しいもの　%>
-<%= f.text_field :name %>
+    <% @wants.each do |w| %>
+    <tr>
+    <td><%= w.name %></td>
+    <td><%= w.price %>円</td>
+    <td><%= w.priority %></td>
+    <td><%= w.limit_date %></td>
+    <td>
+        <%= link_to '購入リストに移す', want_path(w.id) %>
+    　　 <%= link_to 'buy', buy_path(thing_id: w.thing_id ) %>
+    　　 <%= form_with  do |f| %>
+    　　 <%= f.hidden_field :thing_id, value: w.thing_id %>
+    　　 <%= f.submit "buy" %>
+    　　 <%= end  %>
 
-<%= f.label :値段　%>
-<%= f.text_field :price %>円
-
-<%= f.label :既に持っている %>
-<%= f.check_box :have_state, {class: "check_box"}, true, false %>
-
-<%= f.label :買う %>
-<%= f.check_box :buy_state, {class: "check_box"}, true, false %>
-
-<%= f.label :期限　%>
-<%= f.date_field :limit_date %>
-
-<%= f.submit '保存 '%>
-
-<% end %>
+        <%= link_to '削除', want_path(w.id), method: :delete %>
+    </td>
+    <% end %>
+    </tr>
+</table>

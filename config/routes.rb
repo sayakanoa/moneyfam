@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   resources :events
   resources :payments
   resources :post_comments, only: [:create, :destroy]
+  resources :things
   resources :wants
+  resources :buys
 end

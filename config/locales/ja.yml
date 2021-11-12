@@ -1,12 +1,14 @@
 ja:
-    enums:
-      user:
-        type:
-          saver: "節約家"
-          spender: "浪費家"
-
-
-ja:
+  enums:
+    user:
+      money_type:
+        saver: "節約家"
+        spender: "浪費家"
+    want:
+      priority:
+        low: "低"
+        middle: "中"
+        high: "高"
   date:
     formats:
       default: "%Y/%m/%d"
@@ -31,3 +33,5 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
     pm: "午後"
+
+

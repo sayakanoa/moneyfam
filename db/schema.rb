@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_10_051015) do
+ActiveRecord::Schema.define(version: 2021_11_11_110654) do
+
+  create_table "buys", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "want_id"
+    t.date "month", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_buys_on_user_id"
+    t.index ["want_id"], name: "index_buys_on_want_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.integer "user_id"
@@ -45,6 +55,11 @@ ActiveRecord::Schema.define(version: 2021_11_10_051015) do
     t.index ["user_id"], name: "index_post_comments_on_user_id"
   end
 
+  create_table "things", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,11 +77,10 @@ ActiveRecord::Schema.define(version: 2021_11_10_051015) do
 
   create_table "wants", force: :cascade do |t|
     t.integer "user_id"
-    t.date "month"
     t.string "name", null: false
     t.integer "price", null: false
-    t.boolean "have_state", default: false, null: false
-    t.boolean "buy_state", default: false, null: false
+    t.date "month", null: false
+    t.integer "priority", null: false
     t.date "limit_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

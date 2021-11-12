@@ -1,0 +1,11 @@
+<h1>詳細画面</h1>
+
+<%= @want.name %>
+<%= @want.price %>
+
+
+<% form_with model:@buy, local:true do |f| %>
+<%= f.hidden_field :want_id, :value => @want.id %>
+
+<%= f.submit '購入する' %>
+<% end %>

@@ -1,0 +1,19 @@
+<%= form_with model:@want, local:true do |f| %>
+
+<%= f.date_select :month, discard_year:true, discard_day:true %>
+
+<%= f.label :商品名 %>
+<%= f.text_field :name %>
+
+<%= f.label :値段　%>
+<%= f.text_field :price %>円
+
+<%= f.label :優先度 %>
+<%= f.select_box :priority %>
+
+<%= f.label :検討期限　%>
+<%= f.date_field :limit_date %>
+
+<%= f.submit '保存' %>
+
+<% end %>

@@ -1,8 +1,11 @@
 class WantsController < ApplicationController
 
+  def new
+    @want = Want.new
+  end
+
   def index
     @wants = current_user.wants.all
-    @want = Want.new
   end
 
   def create
@@ -10,6 +13,10 @@ class WantsController < ApplicationController
     @want.user_id = current_user.id
     @want.save
     redirect_to wants_path
+  end
+
+  def show
+    @want = Want.find(params[:id])
   end
 
   def destroy
@@ -20,6 +27,6 @@ class WantsController < ApplicationController
 
   private
   def want_params
-    params.require(:want).permit(:month, :name, :price, :have_state, :buy_state, :limit_date)
+    params.require(:want).permit(:month, :name, :price, :priority, :limit_date)
   end
 end
