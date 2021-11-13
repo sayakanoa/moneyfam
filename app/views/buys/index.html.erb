@@ -1,0 +1,26 @@
+<h1>購入リスト</h1>
+
+<table>
+    <tr>
+        <th>商品名</th>
+        <th>価格</th>
+    </tr>
+    <% @buys.each do |b| %>
+    <tr>
+        <td>
+            <%= b.want.name %>
+        </td>
+        <td>
+            <%= b.want.price %>
+        </td>
+    </tr>
+    <% end %>
+
+     <tr>
+        <td>
+            <h5>合計金額<%= @sum %></h5>
+        </td>
+    </tr>
+
+</table>
+

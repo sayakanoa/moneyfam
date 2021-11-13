@@ -5,7 +5,9 @@ class WantsController < ApplicationController
   end
 
   def index
-    @wants = current_user.wants.all
+    @date = Date.current.strftime
+    @buy = Buy.new
+    @wants = current_user.wants.excepted_bought
   end
 
   def create

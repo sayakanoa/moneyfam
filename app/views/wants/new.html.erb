@@ -9,7 +9,7 @@
 <%= f.text_field :price %>円
 
 <%= f.label :優先度 %>
-<%= f.select_box :priority %>
+<%= f.select :priority, Want.priorities_i18n.keys.map {|k| [Want.priorities_i18n[k], k]} %>
 
 <%= f.label :検討期限　%>
 <%= f.date_field :limit_date %>
