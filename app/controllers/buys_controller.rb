@@ -7,13 +7,12 @@ class BuysController < ApplicationController
     end
 
     def index
-      @buys = current_user.buys.all
-      array = []
-      @buys.all.each do |buy|
-      array << buy.want.price
-      end
-      @sum = array.sum
+      @month = Time.zone.today
+      @buys = current_user.buys.where(month: @month.all_month)
+      @month_enjoy = current_user.payments.find_by(month: @month.all_month).enjoy
+      @sum = Want.where(id: @buys.pluck('want_id')).sum('price')
     end
+
 
     private
     def buy_params

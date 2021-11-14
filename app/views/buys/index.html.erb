@@ -1,26 +1,19 @@
-<h1>購入リスト</h1>
+<h1>今月の購入リスト</h1>
+
+<h4>今月の娯楽費の予算は<%= @month_enjoy %>円</h4>
 
 <table>
     <tr>
         <th>商品名</th>
         <th>価格</th>
     </tr>
-    <% @buys.each do |b| %>
+    <% @buys.each do |buy| %>
     <tr>
-        <td>
-            <%= b.want.name %>
-        </td>
-        <td>
-            <%= b.want.price %>
-        </td>
+        <td><%= buy.want.name%></td>
+        <td><%= buy.want.price %>円</td>
     </tr>
     <% end %>
 
-     <tr>
-        <td>
-            <h5>合計金額<%= @sum %></h5>
-        </td>
-    </tr>
-
 </table>
 
+<h6>合計金額<%= @sum %></h6>
