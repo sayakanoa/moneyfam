@@ -8,14 +8,15 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     @payment.user_id = current_user.id
     @payment.save
-    redirect_to payments_path
+    redirect_to payments_path(user_id: current_user)
   end
 
   def index
     #データを入れる器を作る
     @lists = {id: [], month: [], house: [], life: [], food: [], enjoy: [], saving: [], investing: [], other: [], sum: []}
+    @user = User.find_by(id: params[:user_id])
     #器に入れるデータ
-    @payments = current_user.payments.all
+    @payments = @user.payments.all
     @payments.each do |pt|
       @lists[:id]    << pt.id
       @lists[:month] << pt.month

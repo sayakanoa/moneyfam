@@ -1,0 +1,4 @@
+<%= @user.name %>さんの家計簿
+
+<%= link_to'カレンダー',events_path(user_id: @user.id) %>
+<%= link_to'支出一覧',payments_path(user_id: @user.id)%>

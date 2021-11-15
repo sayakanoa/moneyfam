@@ -1,7 +1,6 @@
 <h1>家計簿作成画面</h1>
 
 <%= form_with model:@payment,  local:true do |f| %>
-
   <div class="month">
     <%= f.label :年月 %>
     <%= f.date_select :month, use_month_numbers: true, date_separator: '年', discard_day: true %>月

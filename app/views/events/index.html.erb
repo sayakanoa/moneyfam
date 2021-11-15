@@ -2,29 +2,27 @@
 
 <%= month_calendar events: @events do |date, events| %>
 <%= date.day %>
-
-
-<% events.each do |event| %>
-    <div>
-      <%= event.title %>
-      <%= event.body %></br>
-      <%= link_to '削除', event_path(event.id), method: :delete %>
-    </div>
-<% end %>
-
-<% end %>
-
-<%= link_to 'イベント追加', new_event_path %>
-
-<h4>コメント</h4>
-<% @post_comments.each do |post_comment| %>
-  <%= post_comment.comment %>
-  <%= post_comment.user.name %>
-  <%= link_to "削除", post_comment_path(post_comment.id), method: :delete %>
+  <% events.each do |event| %>
+      <div>
+        <%= event.title %>
+        <%= event.body %></br>
+        <%= link_to '削除', event_path(event.id), method: :delete %>
+      </div>
+  <% end %>
 <% end %>
 
 
-<%= form_with(model: @post_comment, local: true) do |f|%>
-  <%= f.text_area :comment, rows:"7", placeholder:"コメントをここに記入してください。" %>
-  <%= f.submit "送信"%>
+  <%= link_to 'イベント追加', new_event_path %>
+
+  <% if @events.present? %>
+
+  <%= link_to 'コメント追加', new_post_comment_path(user_id: @user.id) %>
+    <h4>コメント</h4>
+    <% @event_month.each do |em| %>
+      <% em.post_comments.each do |empc| %>
+        <%= empc.comment %>
+        <%= empc.user.name %>
+        <%= link_to "削除", post_comment_path(empc.id), method: :delete %>
+      <% end %>
+    <% end %>
 <% end %>

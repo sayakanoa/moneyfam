@@ -1,0 +1,25 @@
+<h3>ユーザー一覧</h3>
+
+
+<table>
+    <tr>
+        <th>名前</th>
+        <th>自己紹介</th>
+        <th>お金のタイプ</th>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+        <td>
+            <%= link_to user_path(user.id) do %>
+            <%= user.name %>
+            <% end %>
+        </td>
+        <td>
+            <%= user.introduction %>
+        </td>
+        <td>
+            <%= user.money_type_i18n %>
+        </td>
+    </td>
+    <% end %>
+</table>
