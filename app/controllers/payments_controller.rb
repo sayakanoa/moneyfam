@@ -8,15 +8,16 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     @payment.user_id = current_user.id
     @payment.save
-    redirect_to payments_path(user_id: current_user)
+    redirect_to payments_path(user_id: current_user.id)
   end
 
   def index
     #データを入れる器を作る
     @lists = {id: [], month: [], house: [], life: [], food: [], enjoy: [], saving: [], investing: [], other: [], sum: []}
     @user = User.find_by(id: params[:user_id])
-    #器に入れるデータ
-    @payments = @user.payments.all
+    @month = Time.zone.today
+    #器に入れるデータ,１年ごとの表示,月順
+    @payments = @user.payments.where(month: @month.all_year).order(:month)
     @payments.each do |pt|
       @lists[:id]    << pt.id
       @lists[:month] << pt.month
@@ -54,7 +55,7 @@ class PaymentsController < ApplicationController
   def destroy
     payment = Payment.find(params[:id])
     payment.destroy
-    redirect_to payments_path
+    redirect_to payments_path(user_id: current_user.id)
   end
 
   private

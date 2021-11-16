@@ -37,6 +37,8 @@
     </tr>
 </table>
 
+<% if @payment.user_id == current_user.id %>
 <%= link_to '削除する', payment_path(@payment.id), method: :delete %>
+<% end %>
 
 <%= pie_chart @graph_data, colors: ["#191970",	"#D6FF58",	"#60EEFF",	"#5D99FF",	"#A16EFF",	"#FF69A3",	"#FF773E"] %>

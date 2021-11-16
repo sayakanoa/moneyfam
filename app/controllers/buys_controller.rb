@@ -1,4 +1,5 @@
 class BuysController < ApplicationController
+
     def create
       buy = Buy.new(buy_params)
       buy.user_id = current_user.id

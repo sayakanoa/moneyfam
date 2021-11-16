@@ -1,11 +1,13 @@
 <h3>ユーザー一覧</h3>
 
 
-<table>
+<table class="table">
     <tr>
         <th>名前</th>
         <th>自己紹介</th>
-        <th>お金のタイプ</th>
+        <th>タイプ</th>
+        <th>moneyカレンダー</th>
+        <th>支出表</th>
     </tr>
     <% @users.each do |user| %>
     <tr>
@@ -20,6 +22,17 @@
         <td>
             <%= user.money_type_i18n %>
         </td>
-    </td>
+        <td>
+            <%= link_to'カレンダー',events_path(user_id: user.id) %>
+        </td>
+        <td>
+            <%= link_to'支出一覧',payments_path(user_id: user.id)%>
+        </td>
+    </tr>
     <% end %>
 </table>
+
+
+
+
+
