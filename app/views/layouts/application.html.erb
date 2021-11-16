@@ -12,35 +12,39 @@
 
 
   <body>
-      <header style="background-color:#274a78">
+      <header class="py-5", style="background-color:#d3d3d3">
         <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
 
-          <ul class="navbar-nav ml-aut ml-auto list-unstyled">
-            <% if user_signed_in? %>
-              <li class="nav-list-item">
-                <%= link_to '使い方', about_path, class: 'nav-link text-light' %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-light' %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to"ユーザー一覧", users_path, class: 'nav-link text-light' %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
-              </li>
-            <% else %>
-              <li class="nav-list-item">
-                <%= link_to "使い方", about_path, class: 'nav-link text-light' %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-light' %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-light' %>
-              </li>
-            </ul>
-            <% end %>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-aut ml-auto list-unstyled">
+                <% if user_signed_in? %>
+                  <li class="nav-list-item">
+                    <%= link_to '使い方', about_path, class: 'nav-link text-light' %>
+                  </li>
+                  <li class="nav-list-item">
+                    <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-light' %>
+                  </li>
+                  <li class="nav-list-item">
+                    <%= link_to"ユーザー一覧", users_path, class: 'nav-link text-light' %>
+                  </li>
+                  <li class="nav-list-item">
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+                  </li>
+                <% else %>
+                  <li class="nav-list-item">
+                    <%= link_to "使い方", about_path, class: 'nav-link text-light' %>
+                  </li>
+                  <li class="nav-list-item">
+                    <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-light' %>
+                  </li>
+                  <li class="nav-list-item">
+                    <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-light' %>
+                  </li>
+                <% end %>
+                </ul>
+            </div>
+        </div>
         </nav>
       </header>
 
@@ -48,6 +52,11 @@
 
     <%= flash[:notice] %>
     <%= flash[:alert] %>
+
     <%= yield %>
+
+    <footer class="py-2", style="background-color:#d3d3d3">
+      <p class="text-light text-center">© All rights reserved by moneyfam.</p>
+    </footer>
   </body>
 </html>
