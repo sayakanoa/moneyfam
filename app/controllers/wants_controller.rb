@@ -2,6 +2,7 @@ class WantsController < ApplicationController
 
   def new
     @want = Want.new
+    @month = Time.zone.today
   end
 
   def index

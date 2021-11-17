@@ -1,4 +1,4 @@
-<table class="table my-5">
+<table class="table py-5">
     <tr>
         <th></th>
         <th class="pr-5"><h1><%= @payment.month.strftime("%-m月") %></h1></th>
@@ -38,12 +38,12 @@
 </table>
 
 <% if @payment.user_id == current_user.id %>
-<div class="mb-5">
+<div class="pb-5">
     <%= link_to 'データを削除する', payment_path(@payment.id), method: :delete %>
 </div>
 <% end %>
 
 
-<div class="mb-5">
+<div class="pb-5">
     <%= pie_chart @graph_data, colors: ["#191970",	"#D6FF58",	"#60EEFF",	"#5D99FF",	"#A16EFF",	"#FF69A3",	"#FF773E"] %>
 </div>

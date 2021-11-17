@@ -1,34 +1,42 @@
-<h3>ユーザー一覧</h3>
+<div class="container py-5">
+    <h3 class="py-5">
+        ユーザー一覧
+        <i class="fas fa-users"></i>
+    </h3>
 
-
-<table class="table">
-    <tr>
-        <th>名前</th>
-        <th>自己紹介</th>
-        <th>タイプ</th>
-        <th>moneyカレンダー</th>
-        <th>支出表</th>
-    </tr>
-    <% @users.each do |user| %>
-    <tr>
-        <td>
-            <%= user.name %>
-        </td>
-        <td>
-            <%= user.introduction %>
-        </td>
-        <td>
-            <%= user.money_type_i18n %>
-        </td>
-        <td>
-            <%= link_to'カレンダー',events_path(user_id: user.id) %>
-        </td>
-        <td>
-            <%= link_to'支出一覧',payments_path(user_id: user.id)%>
-        </td>
-    </tr>
-    <% end %>
-</table>
+    <table class="table pb-5">
+        <tr>
+            <th>名前</th>
+            <th>自己紹介</th>
+            <th>タイプ</th>
+            <th>カレンダー</th>
+            <th>支出表</th>
+        </tr>
+        <% @users.each do |user| %>
+        <tr>
+            <td>
+                <%= user.name %>
+            </td>
+            <td>
+                <%= user.introduction %>
+            </td>
+            <td>
+                <%= user.money_type_i18n %>
+            </td>
+            <td>
+                <%= link_to events_path(user_id: user.id) do %>
+                <i class="far fa-calendar-alt"></i>
+                <% end %>
+            </td>
+            <td>
+                <%= link_to payments_path(user_id: user.id) do %>
+                <i class="fas fa-calculator"></i>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>
 
 
 

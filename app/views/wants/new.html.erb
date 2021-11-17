@@ -1,19 +1,36 @@
-<%= form_with model:@want, local:true do |f| %>
+<div class="container-fluid pt-5">
+    <h1 class="text-center py-5">購入検討リストの作成</h1>
+    <div class="row justify-content-center pb-5">
+        <%= form_with model:@want, local:true do |f| %>
 
-<%= f.date_select :month, discard_year:true, discard_day:true %>
+        <div class="col-12">
+            <%= f.hidden_field :month, value: @month %>
+        </div>
 
-<%= f.label :商品名 %>
-<%= f.text_field :name %>
+        <div class="col-12 pb-3">
+            <%= f.label :商品名 %>
+            <%= f.text_field :name %>
+        </div>
 
-<%= f.label :値段　%>
-<%= f.text_field :price %>円
+        <div class="col-12 pb-3">
+            <%= f.label :値段　%>
+            <%= f.text_field :price %>円
+        </div>
 
-<%= f.label :優先度 %>
-<%= f.select :priority, Want.priorities_i18n.keys.map {|k| [Want.priorities_i18n[k], k]} %>
+        <div class="col-12 pb-3">
+            <%= f.label :優先度 %>
+            <%= f.select :priority, Want.priorities_i18n.keys.map {|k| [Want.priorities_i18n[k], k]} %>
+        </div>
 
-<%= f.label :検討期限　%>
-<%= f.date_field :limit_date %>
+        <div class="col-12 pb-3">
+            <%= f.label :検討期限　%>
+            <%= f.date_field :limit_date %>
+        </div>
 
-<%= f.submit '保存' %>
+        <div class="col-12 pb-3">
+            <%= f.submit '保存' %>
+        </div>
 
-<% end %>
+        <% end %>
+    </div>
+</div>

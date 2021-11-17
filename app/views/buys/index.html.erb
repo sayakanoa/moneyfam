@@ -1,19 +1,28 @@
-<h1>今月の購入リスト</h1>
+<div class="container py-5">
+    <h4 class="">
+        <i class="fas fa-calculator"></i>
+        <u>今月の自由費の予算は<%= @month_enjoy %>円</u>
+        <i class="fas fa-calculator"></i>
+    </h4>
 
-<h4>今月の娯楽費の予算は<%= @month_enjoy %>円</h4>
+    <h1 class="py-5">
+        今月の購入リスト
+        <i class="fas fa-shopping-cart"></i>
+    </h1>
 
-<table>
-    <tr>
-        <th>商品名</th>
-        <th>価格</th>
-    </tr>
-    <% @buys.each do |buy| %>
-    <tr>
-        <td><%= buy.want.name%></td>
-        <td><%= buy.want.price %>円</td>
-    </tr>
-    <% end %>
+    <table class="table">
+        <tr>
+            <th><h3>商品名</h3></th>
+            <th><h3>価格</h3></th>
+        </tr>
+        <% @buys.each do |buy| %>
+        <tr>
+            <td><h5><%= buy.want.name%></h5></td>
+            <td><h5><%= buy.want.price %>円</h5></td>
+        </tr>
+        <% end %>
 
-</table>
+    </table>
 
-<h6>合計金額<%= @sum %></h6>
+    <h3 class="text-right">合計金額<%= @sum %></h3>
+</div>

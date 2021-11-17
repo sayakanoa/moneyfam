@@ -7,58 +7,79 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/8683c470f0.js" crossorigin="anonymous"></script>
   </head>
-
 
 
   <body>
       <header class="py-5", style="background-color:#d3d3d3">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
 
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav ml-aut ml-auto list-unstyled">
-                <% if user_signed_in? %>
-                  <li class="nav-list-item">
-                    <%= link_to '使い方', about_path, class: 'nav-link text-dark' %>
-                  </li>
-                  <li class="nav-list-item">
-                    <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
-                  </li>
-                  <li class="nav-list-item">
-                    <%= link_to"ユーザー一覧", users_path, class: 'nav-link text-dark' %>
-                  </li>
-                  <li class="nav-list-item">
-                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
-                  </li>
-                <% else %>
-                  <li class="nav-list-item">
-                    <%= link_to "使い方", about_path, class: 'nav-link text-dark' %>
-                  </li>
-                  <li class="nav-list-item">
-                    <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
-                  </li>
-                  <li class="nav-list-item">
-                    <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
-                  </li>
-                <% end %>
-                </ul>
-            </div>
-        </div>
-        </nav>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-aut ml-auto list-unstyled">
+                  <% if user_signed_in? %>
+                    <li class="nav-list-item">
+                      <%= link_to about_path, class: 'nav-link text-dark' do %>
+                      使い方<i class="fas fa-search"></i>
+                      <% end %>
+                    </li>
 
-        <%= flash[:notice] %>
-        <%= flash[:alert] %>
+                    <li class="nav-list-item">
+                      <%= link_to user_path(current_user.id), class: 'nav-link text-dark' do%>
+                      マイページ<i class="far fa-user"></i>
+                      <% end %>
+                    </li>
+
+                    <li class="nav-list-item">
+                      <%= link_to users_path, class: 'nav-link text-dark' do %>
+                      ユーザー一覧<i class="fas fa-users"></i>
+                      <% end %>
+                    </li>
+
+                    <li class="nav-list-item">
+                      <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                      ログアウト<i class="fas fa-sign-out-alt"></i>
+                      <% end %>
+                    </li>
+
+                  <% else %>
+
+                    <li class="nav-list-item">
+                      <%= link_to about_path, class: 'nav-link text-dark' do %>
+                      使い方<i class="fas fa-search"></i>
+                      <% end %>
+                    </li>
+
+                    <li class="nav-list-item">
+                      <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
+                      新規登録<i class="fas fa-user-plus"></i>
+                      <% end %>
+                    </li>
+
+                    <li class="nav-list-item">
+                      <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
+                      ログイン<i class="fas fa-sign-in-alt"></i>
+                      <% end %>
+                    </li>
+
+                  <% end %>
+
+                  </ul>
+              </div>
+          </div>
+          </nav>
+
+          <%= flash[:notice] %>
+          <%= flash[:alert] %>
       </header>
 
-    </div>
+      <main style="background-color:#fffacd">
+        <%= yield %>
+      </main>
 
-    <body style="background-color:#fffacd">
-      <%= yield %>
-    </body>
-
-    <footer class="py-2", style="background-color:#d3d3d3">
-      <p class="text-light text-center">© All rights reserved by moneyfam.</p>
-    </footer>
+      <footer class="py-2", style="background-color:#d3d3d3">
+        <p class="text-light text-center">© All rights reserved by moneyfam.</p>
+      </footer>
   </body>
 </html>

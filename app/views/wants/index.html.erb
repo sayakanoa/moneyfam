@@ -1,23 +1,24 @@
-<h1>購入検討リスト</h1>
+<div class="container py-5">
+<h1 class="pb-5">購入検討リスト</h1>
 
 <%= link_to '新規作成', new_want_path %>
 
 
-<table>
+<table class="table">
     <tr>
-        <th>商品名</th>
-        <th>値段</th>
-        <th>優先度</th>
-        <th>検討期限</th>
+        <th><h4>商品名</h4></th>
+        <th><h4>値段</h4></th>
+        <th><h4>優先度</h4></th>
+        <th><h4>検討期限</h4></th>
         <th></th>
     </tr>
 
     <% @wants.each do |w| %>
     <tr>
-    <td><%= w.name %></td>
-    <td><%= w.price %>円</td>
-    <td><%= w.priority %></td>
-    <td><%= w.limit_date %></td>
+    <td><h6><%= w.name %></h6></td>
+    <td><h6><%= w.price %>円</h6></td>
+    <td><h6><%= w.priority %></h6></td>
+    <td><h6><%= w.limit_date %></h6></td>
 
     <td>
         <%= form_with model:@buy, local:true do |f| %>
@@ -37,3 +38,4 @@
     <% end %>
 
 </table>
+</div>

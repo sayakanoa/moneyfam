@@ -1,41 +1,41 @@
-<h1>カレンダー画面</h1>
+<div class="container py-5">
+  <h1>カレンダー<i class="far fa-calendar-alt"></i></h1>
 
-  <%= month_calendar events: @events do |date, events| %>
-  <%= date.day %>
-    <% events.each do |event| %>
-        <div>
-          <%= event.title %>
-          <%= event.body %></br>
-          <%= link_to '削除', event_path(event.id), method: :delete %>
-        </div>
-    <% end %>
-  <% end %>
-
-  <% if current_user.id == params[:user_id].to_i %>
-  <%= link_to 'イベント追加', new_event_path %>
-  <% end %>
-
-  <% if @events.present? %>
-
-  <%= link_to 'コメント追加', new_post_comment_path(user_id: @user.id) %>
-
-  <h4>コメント一覧</h4>
-    <table>
-    <tr>
-    <th>コメント<th>
-    <th>名前</th>
-    <th></th>
-    </tr>
-
-    <% @event_month.each do |em| %>
-      <% em.post_comments.each do |empc| %>
-      <tr>
-        <td><%= empc.comment %></td>
-        <td><%= empc.user.name %></td>
-        <td><%= link_to "削除", post_comment_path(empc.id), method: :delete %></td>
-      </tr>
+    <%= month_calendar events: @events do |date, events| %>
+    <%= date.day %>
+      <% events.each do |event| %>
+          <div>
+            <%= event.title %>
+            <%= event.body %></br>
+            <%= link_to '削除', event_path(event.id), method: :delete %>
+          </div>
       <% end %>
     <% end %>
-    </tdble>
 
-  <% end %>
+    <% if current_user.id == params[:user_id].to_i %>
+    <%= link_to 'イベント追加', new_event_path %>
+    <% end %>
+
+    <% if @events.present? %>
+    <%= link_to 'コメント追加', new_post_comment_path(user_id: @user.id) %>
+    <% end %>
+
+      <table class="table table-border border-success">
+      <tr>
+        <th>コメント<i class="far fa-comments"></i></th>
+        <th>名前</th>
+        <th></th>
+      </tr>
+
+      <% @event_month.each do |em| %>
+        <% em.post_comments.each do |empc| %>
+        <tr>
+          <td><%= empc.comment %></td>
+          <td><%= empc.user.name %></td>
+          <td><%= link_to "削除", post_comment_path(empc.id), method: :delete %></td>
+        </tr>
+        <% end %>
+      <% end %>
+      </table>
+
+</div>
