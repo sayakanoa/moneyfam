@@ -1,67 +1,72 @@
-<h1>今年の家計簿一覧</h1>
-<%= link_to "前年",payments_path(user: @user, month: @month.prev_year) %>
-
-<table>
-    <tr>
-        <th>年月</th>
-
-            <% @lists[:month].zip(@lists[:id]).each do |m, id| %>
-            <th>
-            <%= link_to payment_path(id) do %>
-                <%= m.strftime("%-m月") %>
-            <% end %>
-            </th>
-            <% end %>
-
-    </tr>
-    <tr>
-        <th>家賃</th>
-        <%  @lists[:house].each do |h| %>
-        <td><%= h %></td>
-        <% end %>
-    </tr>
-    <tr>
-        <td>生活費</td>
-        <%  @lists[:life].each do |l| %>
-        <td><%= l %></td>
-        <% end %>
-    <tr>
-    <tr>
-        <td>食費</td>
-        <%  @lists[:food].each do |f| %>
-        <td><%= f %></td>
-        <% end %>
-    </tr>
-    <tr>
-        <td>娯楽費</td>
-        <%  @lists[:enjoy].each do |e| %>
-        <td><%= e %></td>
-        <% end %>
-    </tr>
-    <tr>
-        <td>貯金</td>
-        <%  @lists[:saving].each do |s| %>
-        <td><%= s %></td>
-        <% end %>
-    </tr>
-    <tr>
-        <td>資産運用</td>
-        <%  @lists[:investing].each do |i| %>
-        <td><%= i %></td>
-        <% end %>
-    </tr>
-    <tr>
-        <td>その他</td>
-        <%  @lists[:other].each do |o| %>
-        <td><%= o %></td>
-        <% end %>
-    </tr>
-    <tr>
-        <th>合計金額</th>
-        <%  @lists[:sum].each do |s| %>
-        <td><%= s %></td>
-        <% end %>
-    </tr>
+<div class="container my-5">
+<h1 class="text-center">今年の家計簿</h1>
 
 
-</table>
+        <%= link_to "前年",payments_path(user: @user, month: @month.prev_year) %>
+
+        <table class="table">
+            <tr>
+                <th><h3>年月</h3></th>
+
+                    <% @lists[:month].zip(@lists[:id]).each do |m, id| %>
+                    <th>
+                    <%= link_to payment_path(id) do %>
+                    <h3><%= m.strftime("%-m月") %></h3>
+                    <% end %>
+                    </th>
+                    <% end %>
+
+            </tr>
+            <tr>
+                <th><h3>家賃</h3></th>
+                <%  @lists[:house].each do |h| %>
+                <td><%= h %></td>
+                <% end %>
+            </tr>
+            <tr>
+                <td><h3>生活費</h3></td>
+                <%  @lists[:life].each do |l| %>
+                <td><%= l %></td>
+                <% end %>
+            <tr>
+            <tr>
+                <td><h3>食費</h3></td>
+                <%  @lists[:food].each do |f| %>
+                <td><%= f %></td>
+                <% end %>
+            </tr>
+            <tr>
+                <td><h3>娯楽費</h3></td>
+                <%  @lists[:enjoy].each do |e| %>
+                <td><%= e %></td>
+                <% end %>
+            </tr>
+            <tr>
+                <td><h3>貯金</h3></td>
+                <%  @lists[:saving].each do |s| %>
+                <td><%= s %></td>
+                <% end %>
+            </tr>
+            <tr>
+                <td><h3>資産運用</h3></td>
+                <%  @lists[:investing].each do |i| %>
+                <td><%= i %></td>
+                <% end %>
+            </tr>
+            <tr>
+                <td><h3>その他</h3></td>
+                <%  @lists[:other].each do |o| %>
+                <td><%= o %></td>
+                <% end %>
+            </tr>
+            <tr>
+                <th><h3>合計金額</h3></th>
+                <%  @lists[:sum].each do |s| %>
+                <td><%= s %></td>
+                <% end %>
+            </tr>
+
+
+        </table>
+
+</div>

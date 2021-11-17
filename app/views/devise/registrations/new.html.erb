@@ -1,43 +1,47 @@
-<h2>新規登録</h2>
+<div class="container-fluid mt-5">
+  <h1 class="text-center">新規登録</h1>
 
-<%= form_with model: @user, url: user_registration_path, local: true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="row justify-content-center mb-5">
+  <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :name, '名前' %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+    <div class="col-12 mt-2">
+      <%= f.label :name, '名前' %><br />
+      <%= f.text_field :name, autofocus: true %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email, 'メールアドレス' %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="col-12 mt-2">
+      <%= f.label :email, 'メールアドレス' %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password, 'パスワード' %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="col-12 mt-2">
+      <%= f.label :password, 'パスワード' %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %>文字以上)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation,'パスワード確認' %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="col-12 mt-2">
+      <%= f.label :password_confirmation,'パスワード確認' %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :introduction, '自己紹介' %><br />
-    <%= f.text_field :introduction, autofocus: true %>
-  </div>
+    <div class="col-12 mt-2">
+      <%= f.label :introduction, '自己紹介' %><br />
+      <%= f.text_field :introduction, autofocus: true %>
+    </div>
 
-  <div class="field">
-    <%= f.label :money_type, '価値観' %><br />
-    <%= f.select :money_type, User.money_types_i18n.keys.map {|k| [User.money_types_i18n[k], k]} %>
-  </div>
+    <div class="col-12 mt-2">
+      <%= f.label :money_type, '価値観' %><br />
+      <%= f.select :money_type, User.money_types_i18n.keys.map {|k| [User.money_types_i18n[k], k]} %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "登録" %>
-  </div>
+    <div class="col-12 mt-4">
+      <%= f.submit "登録" %>
+    </div>
 
-<% end %>
+  <% end %>
+</div>
+</div>

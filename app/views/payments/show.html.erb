@@ -1,44 +1,49 @@
-<table>
+<table class="table my-5">
     <tr>
         <th></th>
-        <th><%= @payment.month.strftime("%-m月") %></th>
+        <th class="pr-5"><h1><%= @payment.month.strftime("%-m月") %></h1></th>
     </tr>
     <tr>
-        <th>家賃</th>
-        <td><%= @payment.house %></td>
+        <th class="pl-5"><h3>家賃</h3></th>
+        <td class><h4><%= @payment.house %></h4></td>
     </tr>
     <tr>
-        <th>生活費</th>
-        <td><%= @payment.life %><td>
+        <th class="pl-5"><h3>生活費</h3></th>
+        <td><h4><%= @payment.life %></h4><td>
     </tr>
     <tr>
-        <th>食費</th>
-        <td><%= @payment.food %></td>
+        <th class="pl-5"><h3>食費</h3></th>
+        <td><h4><%= @payment.food %></h4></td>
     </tr>
     <tr>
-        <th>娯楽費</th>
-        <td><%= @payment.enjoy %></td>
+        <th class="pl-5"><h3>娯楽費</h3></th>
+        <td><h4><%= @payment.enjoy %></h4></td>
     </tr>
     <tr>
-        <th>貯金</th>
-        <td><%= @payment.saving %></td>
+        <th class="pl-5"><h3>貯金</h3></th>
+        <td><h4><%= @payment.saving %></h4></td>
     </tr>
     <tr>
-        <th>資産運用</th>
-        <td><%= @payment.investing %></td>
+        <th class="pl-5"><h3>資産運用<h3></th>
+        <td><h4><%= @payment.investing %></h4></td>
     </tr>
     <tr>
-        <th>その他</th>
-        <td><%= @payment.other %></td>
+        <th class="pl-5"><h3>その他</h3></th>
+        <td><h4><%= @payment.other %></h4></td>
     </tr>
     <tr>
-        <th>合計金額</th>
-        <td><%= @sum %></td>
+        <th class="pl-5"><h3>合計</h3></th>
+        <td><h4><%= @sum %></h4></td>
     </tr>
 </table>
 
 <% if @payment.user_id == current_user.id %>
-<%= link_to '削除する', payment_path(@payment.id), method: :delete %>
+<div class="mb-5">
+    <%= link_to 'データを削除する', payment_path(@payment.id), method: :delete %>
+</div>
 <% end %>
 
-<%= pie_chart @graph_data, colors: ["#191970",	"#D6FF58",	"#60EEFF",	"#5D99FF",	"#A16EFF",	"#FF69A3",	"#FF773E"] %>
+
+<div class="mb-5">
+    <%= pie_chart @graph_data, colors: ["#191970",	"#D6FF58",	"#60EEFF",	"#5D99FF",	"#A16EFF",	"#FF69A3",	"#FF773E"] %>
+</div>
