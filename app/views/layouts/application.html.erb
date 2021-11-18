@@ -8,16 +8,23 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/8683c470f0.js" crossorigin="anonymous"></script>
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Yuji+Mai&family=Zen+Kurenaido&display=swap');
+    </style>
   </head>
 
 
   <body>
-      <header class="py-5", style="background-color:#d3d3d3">
+      <header class="", style="background-color:#d3d3d3">
           <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ml-aut ml-auto list-unstyled">
+            <a class="navbar-brand" href="/"><%= image_tag('logo.jpg') %></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+            <div class="collapse navbar-collapse mx-auto" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto float-right list-unstyled">
                   <% if user_signed_in? %>
                     <li class="nav-list-item">
                       <%= link_to about_path, class: 'nav-link text-dark' do %>

@@ -1,18 +1,30 @@
 <div class="container py-5">
-    <div class="row">
-        <%= link_to "カレンダー", events_path(user_id: current_user.id)%>
+    <div class="row py-4">
+        <i class="far fa-hand-point-right"></i>
+        <%= link_to events_path(user_id: current_user.id) do %>
+        <button class="btn btn-outline-dark">カレンダー</button>
+        <% end %>
     </div>
 
-    <div class="row">
-        <%= link_to "支出一覧", payments_path(user_id: current_user.id)%>
+    <div class="row py-4 ">
+        <i class="far fa-hand-point-right"></i>
+        <%= link_to payments_path(user_id: current_user.id) do %>
+        <button class="btn btn-outline-dark">支出一覧</button>
+        <% end %>
     </div>
 
-    <div class="row">
-        <%= link_to "購入検討リスト", wants_path(user_id: current_user.id)%>
+    <div class="row py-4">
+        <i class="far fa-hand-point-right"></i>
+        <%= link_to wants_path(user_id: current_user.id) do %>
+        <button class="btn btn-outline-dark">購入検討リスト</button>
+        <% end %>
     </div>
 
-    <div class="row">
-        <%= link_to "購入リスト", buys_path(user_id: current_user.id)%>
+    <div class="row py-4">
+        <i class="far fa-hand-point-right"></i>
+        <%= link_to buys_path(user_id: current_user.id) do %>
+        <button class="btn btn-outline-dark">購入リスト</button>
+        <% end %>
     </div>
 
 
