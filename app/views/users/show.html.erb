@@ -1,32 +1,40 @@
-<div class="container py-5">
-    <div class="row py-4">
+<div class="container-fluid pt-5">
+
+  <div class="row pb-5">
+    <div class="offset-5 col-5 align-self-center pt-4">
         <i class="far fa-hand-point-right"></i>
         <%= link_to events_path(user_id: current_user.id) do %>
         <button class="btn btn-outline-dark">カレンダー</button>
         <% end %>
     </div>
 
-    <div class="row py-4 ">
+    <div class="offset-5 col-5 pt-4">
         <i class="far fa-hand-point-right"></i>
-        <%= link_to payments_path(user_id: current_user.id) do %>
-        <button class="btn btn-outline-dark">支出一覧</button>
+        <%= link_to new_payment_path(user_id: current_user.id) do %>
+        <button class="btn btn-outline-dark">家計簿の登録</button>
         <% end %>
     </div>
 
-    <div class="row py-4">
+    <div class="offset-5 col-5 pt-4">
+        <i class="far fa-hand-point-right"></i>
+        <%= link_to payments_path(user_id: current_user.id) do %>
+        <button class="btn btn-outline-dark">家計簿一覧</button>
+        <% end %>
+    </div>
+    <div class="offset-5 col-5 pt-4">
         <i class="far fa-hand-point-right"></i>
         <%= link_to wants_path(user_id: current_user.id) do %>
         <button class="btn btn-outline-dark">購入検討リスト</button>
         <% end %>
     </div>
 
-    <div class="row py-4">
+    <div class="offset-5 col-5 pt-4">
         <i class="far fa-hand-point-right"></i>
         <%= link_to buys_path(user_id: current_user.id) do %>
         <button class="btn btn-outline-dark">購入リスト</button>
         <% end %>
     </div>
 
-
+  </div>
 </div>
 

@@ -1,24 +1,24 @@
-<div class="container-fluid mt-5">
+<div class="container-fluid pt-5">
 <h1 class="text-center">家計簿の作成</h1>
 
-    <div class="row justify-content-center mb-5">
+    <div class="row justify-content-center pb-5">
     <%= form_with model:@payment,  local:true do |f| %>
-      <div class="col-12 mt-2">
+      <div class="col-12 pt-2">
         <%= f.label :年月 %>
         <%= f.date_select :month, use_month_numbers: true, date_separator: '年', discard_day: true %>月
       </div>
 
-      <div class="col-12 mt-2">
+      <div class="col-12 pt-2">
           <%= f.label :家賃　%>
           <%= f.text_field :house %>円
       </div>
 
-      <div class="col-12 mt-2">
+      <div class="col-12 pt-2">
           <%= f.label :生活費　%>
           <%= f.text_field :life %>円
       </div>
 
-      <div class="col-12 mt-2">
+      <div class="col-12 pt-2">
           <%= f.label :食費　%>
           <%= f.text_field :food %>円
       </div>
@@ -28,22 +28,22 @@
           <%= f.text_field :enjoy %>円
       </div>
 
-      <div class="col-12 mt-2">
+      <div class="col-12 pt-2">
           <%= f.label :貯金　%>
           <%= f.text_field :saving %>円
       </div>
 
-      <div class="col-12 mt-2">
+      <div class="col-12 pt-2">
           <%= f.label :資産運用　%>
           <%= f.text_field :investing %>円
       </div>
 
-      <div class="col-12 mt-2">
+      <div class="col-12 pt-2">
           <%= f.label :その他　%>
           <%= f.text_field :other %>円
       </div>
 
-      <div class="col-12 mt-3">
+      <div class="col-12 pt-3">
         <%= f.submit %>
       </div>
 
