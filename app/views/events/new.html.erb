@@ -1,23 +1,30 @@
-<%= form_with(model: @event, local: true) do |form| %>
+<div class="container-fluid pt-5">
+    <h1 class="text-center">カレンダー作成</h1>
 
-  <div class="date">
-    <%= form.label :start_time %>
-    <%= form.date_select :start_time %>
-  </div>
+    <div class="row justify-content-center pb-5">
+    <%= form_with(model: @event, local: true) do |form| %>
 
-  <div class="title">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+      <div class="col-12 pt-4">
+        <%= form.label :start_time %>
+        <%= form.date_select :start_time %>
+      </div>
 
-  <div class="body">
-    <%= form.label :body %>
-    <%= form.text_field :body %>
-  </div>
+      <div class="col-12 pt-3">
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+      </div>
+
+      <div class="col-12 pt-3">
+        <%= form.label :body %>
+        <%= form.text_field :body %>
+      </div>
 
 
-  <div class="submit">
-    <%= form.submit %>
-  </div>
+      <div class="submit col-12 pt-3">
+        <%= form.submit %>
+      </div>
 
-<% end %>
+    <% end %>
+    </div>
+
+</div>

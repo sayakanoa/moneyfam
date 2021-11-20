@@ -1,5 +1,20 @@
-<%= form_with(model: @post_comment, local: true) do |f|%>
-  <%= f.hidden_field :event_id, value: @event.id %>
-  <%= f.text_area :comment, rows:"7", placeholder:"コメントをここに記入してください。" %>
-  <%= f.submit "送信"%>
-<% end %>
+<div class="container-fluid pt-5">
+  <h1 class="text-center">コメント</h1>
+
+  <div class="row justify-content-center py-3">
+
+    <%= form_with(model: @post_comment, local: true) do |f|%>
+    <div class="col-12">
+      <%= f.hidden_field :event_id, value: @event.id %>
+    </div>
+    <div class="col-12">
+      <%= f.text_area :comment, size: "50x5", placeholder:"コメントをここに記入してください。" %>
+    </div>
+    <div class="offset-5 col-5 py-2">
+      <%= f.submit "送信"%>
+    </div>
+    <% end %>
+
+  </div>
+
+</div>
