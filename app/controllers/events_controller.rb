@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-
   def new
     @event = Event.new
   end
@@ -8,7 +7,7 @@ class EventsController < ApplicationController
     @user = User.find(params[:user_id])
     @events = @user.events
     @post_comments = @user.post_comments
-    #今日の日付を取得する
+    # 今日の日付を取得する
     @month = Time.zone.today
     @event_month = Event.where(user_id: @user.id, created_at: @month.all_month)
   end
@@ -31,6 +30,4 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:title, :body, :start_time)
   end
-
-
 end

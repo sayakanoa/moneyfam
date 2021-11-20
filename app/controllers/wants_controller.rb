@@ -1,5 +1,4 @@
 class WantsController < ApplicationController
-
   def new
     @want = Want.new
     @month = Time.zone.today
@@ -29,6 +28,7 @@ class WantsController < ApplicationController
   end
 
   private
+
   def want_params
     params.require(:want).permit(:month, :name, :price, :priority, :limit_date)
   end

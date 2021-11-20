@@ -10,83 +10,81 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_11_110654) do
-
-  create_table "buys", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "want_id"
-    t.date "month", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_buys_on_user_id"
-    t.index ["want_id"], name: "index_buys_on_want_id"
+ActiveRecord::Schema.define(version: 20_211_111_110_654) do
+  create_table 'buys', force: :cascade do |t|
+    t.integer 'user_id'
+    t.integer 'want_id'
+    t.date 'month', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_buys_on_user_id'
+    t.index ['want_id'], name: 'index_buys_on_want_id'
   end
 
-  create_table "events", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "title", default: "", null: false
-    t.string "body"
-    t.date "start_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_events_on_user_id"
+  create_table 'events', force: :cascade do |t|
+    t.integer 'user_id'
+    t.string 'title', default: '', null: false
+    t.string 'body'
+    t.date 'start_time'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_events_on_user_id'
   end
 
-  create_table "payments", force: :cascade do |t|
-    t.integer "user_id"
-    t.date "month", null: false
-    t.integer "house"
-    t.integer "life"
-    t.integer "food"
-    t.integer "enjoy"
-    t.integer "saving"
-    t.integer "investing"
-    t.integer "other"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_payments_on_user_id"
+  create_table 'payments', force: :cascade do |t|
+    t.integer 'user_id'
+    t.date 'month', null: false
+    t.integer 'house'
+    t.integer 'life'
+    t.integer 'food'
+    t.integer 'enjoy'
+    t.integer 'saving'
+    t.integer 'investing'
+    t.integer 'other'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_payments_on_user_id'
   end
 
-  create_table "post_comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "event_id"
-    t.text "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_post_comments_on_event_id"
-    t.index ["user_id"], name: "index_post_comments_on_user_id"
+  create_table 'post_comments', force: :cascade do |t|
+    t.integer 'user_id'
+    t.integer 'event_id'
+    t.text 'comment'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['event_id'], name: 'index_post_comments_on_event_id'
+    t.index ['user_id'], name: 'index_post_comments_on_user_id'
   end
 
-  create_table "things", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'things', force: :cascade do |t|
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "name", default: "", null: false
-    t.string "introduction", default: "", null: false
-    t.integer "money_type", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.string 'name', default: '', null: false
+    t.string 'introduction', default: '', null: false
+    t.integer 'money_type', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
-  create_table "wants", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "name", null: false
-    t.integer "price", null: false
-    t.date "month", null: false
-    t.integer "priority", null: false
-    t.date "limit_date", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_wants_on_user_id"
+  create_table 'wants', force: :cascade do |t|
+    t.integer 'user_id'
+    t.string 'name', null: false
+    t.integer 'price', null: false
+    t.date 'month', null: false
+    t.integer 'priority', null: false
+    t.date 'limit_date', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_wants_on_user_id'
   end
-
 end

@@ -1,5 +1,4 @@
 class PaymentsController < ApplicationController
-
   def new
     @payment = Payment.new
   end
@@ -12,11 +11,12 @@ class PaymentsController < ApplicationController
   end
 
   def index
-    #データを入れる器を作る
-    @lists = {id: [], month: [], house: [], life: [], food: [], enjoy: [], saving: [], investing: [], other: [], sum: []}
+    # データを入れる器を作る
+    @lists = { id: [], month: [], house: [], life: [], food: [], enjoy: [], saving: [], investing: [], other: [],
+               sum: [] }
     @user = User.find_by(id: params[:user_id])
     @month = Time.zone.today
-    #器に入れるデータ,１年ごとの表示,月順
+    # 器に入れるデータ,１年ごとの表示,月順
     @payments = @user.payments.where(month: @month.all_year).order(:month)
     @payments.each do |pt|
       @lists[:id]    << pt.id
@@ -34,7 +34,7 @@ class PaymentsController < ApplicationController
 
   def show
     @payment = Payment.find(params[:id])
-    #空箱にデータを直接入れる
+    # 空箱にデータを直接入れる
     @graph_data = {
       家賃: @payment.house,
       生活費: @payment.life,
@@ -48,9 +48,7 @@ class PaymentsController < ApplicationController
     @sum = @payment.house + @payment.life + @payment.food + @payment.enjoy + @payment.saving + @payment.investing + @payment.other
   end
 
-
-  def edit
-  end
+  def edit; end
 
   def destroy
     payment = Payment.find(params[:id])
@@ -59,8 +57,8 @@ class PaymentsController < ApplicationController
   end
 
   private
+
   def payment_params
     params.require(:payment).permit(:month, :house, :life, :food, :enjoy, :saving, :investing, :other)
   end
-
 end

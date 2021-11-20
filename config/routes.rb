@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :events
   resources :payments
-  resources :post_comments, only: [:new, :create, :destroy]
+  resources :post_comments, only: %i[new create destroy]
   resources :wants
   resources :buys
 end
