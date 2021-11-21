@@ -7,7 +7,9 @@
           <div>
             <%= event.title %>
             <%= event.body %></br>
-            <%= link_to '削除', event_path(event.id), method: :delete %>
+            <%= link_to event_path(event.id), method: :delete,class: "delete-button btn btn-outline-danger" do %>
+            <p>削除</p>
+            <% end %>
           </div>
       <% end %>
     <% end %>
@@ -24,6 +26,7 @@
     <% end %>
     <% end %>
 
+    <div class="table-responsive-sm">
       <table class="table table-border border-success">
       <tr>
         <th>コメント<i class="far fa-comments"></i></th>
@@ -36,10 +39,15 @@
         <tr>
           <td><%= empc.comment %></td>
           <td><%= empc.user.name %></td>
-          <td><%= link_to "削除", post_comment_path(empc.id), method: :delete %></td>
+          <td>
+            <%= link_to post_comment_path(empc.id), method: :delete, class: 'btn btn-outline-dark' do%>
+            削除
+            <% end %>
+          </td>
         </tr>
         <% end %>
       <% end %>
       </table>
+    </div>
 
 </div>

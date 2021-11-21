@@ -1,41 +1,46 @@
 <div class="container py-5">
-<h1 class="pb-5">購入検討リスト</h1>
+    <h1 class="pb-5">購入検討リスト</h1>
 
-<%= link_to '新規作成', new_want_path %>
+    <div class="table-responsive-sm">
+        <table class="table">
+            <tr>
+                <th><h4>商品名</h4></th>
+                <th><h4>値段</h4></th>
+                <th><h4>優先度</h4></th>
+                <th><h4>検討期限</h4></th>
+                <th></th>
+                <th></th>
+            </tr>
 
+            <% @wants.each do |w| %>
+            <tr>
+            <td><h6><%= w.name %></h6></td>
+            <td><h6><%= w.price %>円</h6></td>
+            <td><h6><%= w.priority_i18n %></h6></td>
+            <td><h6><%= w.limit_date %></h6></td>
 
-<table class="table">
-    <tr>
-        <th><h4>商品名</h4></th>
-        <th><h4>値段</h4></th>
-        <th><h4>優先度</h4></th>
-        <th><h4>検討期限</h4></th>
-        <th></th>
-    </tr>
+            <td>
+                <%= form_with model:@buy, local:true do |f| %>
+                <%= f.hidden_field :month, value: @date %>
+                <%= f.hidden_field :want_id, value: w.id %>
+                <%= f.submit "購入リストへ追加", class: 'btn btn-outline-info' %>
+                <% end %>
+            </td>
 
-    <% @wants.each do |w| %>
-    <tr>
-    <td><h6><%= w.name %></h6></td>
-    <td><h6><%= w.price %>円</h6></td>
-    <td><h6><%= w.priority %></h6></td>
-    <td><h6><%= w.limit_date %></h6></td>
+            <td>
+                <%= link_to want_path(w.id), method: :delete, class: 'btn btn-outline-success' do %>
+                削除
+                <% end %>
 
-    <td>
-        <%= form_with model:@buy, local:true do |f| %>
-        <%= f.hidden_field :month, value: @date %>
-        <%= f.hidden_field :want_id, value: w.id %>
-        <%= f.submit "購入リストに入れる" %>
-        <% end %>
-    </td>
+            </td>
+            </tr>
+            <% end %>
 
+        </table>
+    </div>
 
-    <td>
-        <%= link_to '削除', want_path(w.id), method: :delete %>
-
-
-    </td>
-    </tr>
+    <%= link_to new_want_path, class: 'btn btn-outline-dark' do %>
+    新しくリストに加える
     <% end %>
 
-</table>
 </div>

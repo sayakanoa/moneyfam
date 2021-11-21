@@ -1,5 +1,5 @@
 <div class="container-fluid pt-5">
-    <h1 class="text-center py-5">購入検討リストの作成</h1>
+    <h1 class="want-title text-center py-5">購入検討リストの作成</h1>
     <div class="row justify-content-center pb-5">
         <%= form_with model:@want, local:true do |f| %>
 
@@ -27,8 +27,8 @@
             <%= f.date_field :limit_date %>
         </div>
 
-        <div class="col-12 pb-3">
-            <%= f.submit '保存' %>
+        <div class="offset-3 col-9 pb-3">
+            <%= f.submit "追加する", class: 'btn btn-outline-info'  %>
         </div>
 
         <% end %>

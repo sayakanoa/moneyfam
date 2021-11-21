@@ -13,7 +13,7 @@
       <div class="col-12 mt-2">
         <%= f.label :email, 'メールアドレス' %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>  
+      </div>
 
       <div class="col-12 mt-2">
         <%= f.label :password, 'パスワード' %>
@@ -38,8 +38,8 @@
         <%= f.select :money_type, User.money_types_i18n.keys.map {|k| [User.money_types_i18n[k], k]} %>
       </div>
 
-      <div class="col-12 mt-4">
-        <%= f.submit "登録" %>
+      <div class="offset-3 col-9 mt-4">
+        <%= f.submit "登録", class: 'btn btn-outline-dark' %>
       </div>
 
     <% end %>

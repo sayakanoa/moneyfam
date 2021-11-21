@@ -38,8 +38,10 @@
 </table>
 
 <% if @payment.user_id == current_user.id %>
-<div class="pb-5">
-    <%= link_to 'データを削除する', payment_path(@payment.id), method: :delete %>
+<div class="pb-5 pl-5">
+    <%= link_to payment_path(@payment.id), method: :delete, class: 'btn btn-outline-info' do %>
+    データを削除する
+    <% end %>
 </div>
 <% end %>
 
