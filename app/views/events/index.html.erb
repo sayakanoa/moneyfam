@@ -7,9 +7,13 @@
           <div>
             <%= event.title %>
             <%= event.body %></br>
-            <%= link_to event_path(event.id), method: :delete,class: "delete-button btn btn-outline-danger" do %>
-            <p>削除</p>
+
+            <% if current_user.id == event.user_id %>
+              <%= link_to event_path(event.id), method: :delete,class: "delete-button btn btn-outline-danger" do %>
+              <p>削除</p>
+              <% end %>
             <% end %>
+
           </div>
       <% end %>
     <% end %>
@@ -40,8 +44,10 @@
           <td><%= empc.comment %></td>
           <td><%= empc.user.name %></td>
           <td>
-            <%= link_to post_comment_path(empc.id), method: :delete, class: 'btn btn-outline-dark' do%>
-            削除
+            <% if current_user.id == empc.user_id %>
+                <%= link_to post_comment_path(empc.id), method: :delete, class: 'btn btn-outline-dark' do%>
+                  削除
+                <% end %>
             <% end %>
           </td>
         </tr>

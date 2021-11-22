@@ -6,8 +6,12 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
     @payment.user_id = current_user.id
-    @payment.save
-    redirect_to payments_path(user_id: current_user.id)
+    if @payment.save
+      redirect_to payments_path(user_id: current_user.id), notice: "作成できました。"
+    else
+      flash[:alert] = "作成できていません。"
+      render :new
+    end
   end
 
   def index

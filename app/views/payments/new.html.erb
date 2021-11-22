@@ -3,8 +3,9 @@
 
     <div class="row justify-content-center pb-5">
     <%= form_with model:@payment,  local:true do |f| %>
+
       <div class="col-12 pt-2">
-        <%= f.label :年月 %>
+        <%= f.label :日付 %>
         <%= f.date_select :month, use_month_numbers: true, date_separator: '年', discard_day: true %>月
       </div>
 
@@ -43,7 +44,7 @@
           <%= f.text_field :other %>円
       </div>
 
-      <div class="offset-3 col-9 pt-3">
+      <div class="offset-2 col-9 pt-3">
         <%= f.submit "追加する", class: 'btn btn-outline-info'  %>
       </div>
 

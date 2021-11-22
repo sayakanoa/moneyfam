@@ -10,8 +10,15 @@ class PostCommentsController < ApplicationController
   def create
     comment = PostComment.new(post_comment_params)
     comment.user_id = current_user.id
-    comment.save
-    redirect_to events_path(user_id: comment.event.user_id)
+    if comment.save
+      redirect_to events_path(user_id: comment.event.user_id), notice: "コメントできました"
+    else
+      @user = User.find_by(params[:event_id])
+      @month = Time.zone.today
+      @event = Event.find_by(user_id: @user.id, created_at: @month.all_month)
+      flash[:alert] = "コメントできていません。"
+      render :new
+    end
   end
 
   def destroy

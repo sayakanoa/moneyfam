@@ -13,8 +13,12 @@ class WantsController < ApplicationController
   def create
     @want = Want.new(want_params)
     @want.user_id = current_user.id
-    @want.save
-    redirect_to wants_path
+    if @want.save
+      redirect_to wants_path, notice: "追加できました"
+    else
+      flash[:alert] = "追加できていません。"
+      render :new
+    end
   end
 
   def show

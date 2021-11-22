@@ -1,9 +1,14 @@
 class BuysController < ApplicationController
+
   def create
     buy = Buy.new(buy_params)
     buy.user_id = current_user.id
-    buy.save
-    redirect_to buys_path
+    if buy.save
+      redirect_to buys_path, notice: "追加できました"
+    else
+     flash[:alert] = "追加できていません。"
+     redirect_to wants_path
+    end
   end
 
   def index

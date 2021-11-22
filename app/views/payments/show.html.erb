@@ -1,51 +1,57 @@
-<table class="table py-5">
-    <tr>
-        <th></th>
-        <th class="pr-5"><h1><%= @payment.month.strftime("%-m月") %></h1></th>
-    </tr>
-    <tr>
-        <th class="pl-5"><h3>家賃</h3></th>
-        <td class><h4><%= @payment.house %></h4></td>
-    </tr>
-    <tr>
-        <th class="pl-5"><h3>生活費</h3></th>
-        <td><h4><%= @payment.life %></h4><td>
-    </tr>
-    <tr>
-        <th class="pl-5"><h3>食費</h3></th>
-        <td><h4><%= @payment.food %></h4></td>
-    </tr>
-    <tr>
-        <th class="pl-5"><h3>娯楽費</h3></th>
-        <td><h4><%= @payment.enjoy %></h4></td>
-    </tr>
-    <tr>
-        <th class="pl-5"><h3>貯金</h3></th>
-        <td><h4><%= @payment.saving %></h4></td>
-    </tr>
-    <tr>
-        <th class="pl-5"><h3>資産運用<h3></th>
-        <td><h4><%= @payment.investing %></h4></td>
-    </tr>
-    <tr>
-        <th class="pl-5"><h3>その他</h3></th>
-        <td><h4><%= @payment.other %></h4></td>
-    </tr>
-    <tr>
-        <th class="pl-5"><h3>合計</h3></th>
-        <td><h4><%= @sum %></h4></td>
-    </tr>
-</table>
+<div class="container py-5">
+    <div class="row py-5">
+        <table class="table col-sm-12 py-5">
+            <tr>
+                <th></th>
+                <th class="pr-5"><h1><%= @payment.month.strftime("%-m月") %></h1></th>
+            </tr>
+            <tr>
+                <th class="pl-5"><h3>家賃</h3></th>
+                <td class><h4><%= @payment.house %></h4></td>
+            </tr>
+            <tr>
+                <th class="pl-5"><h3>生活費</h3></th>
+                <td><h4><%= @payment.life %></h4><td>
+            </tr>
+            <tr>
+                <th class="pl-5"><h3>食費</h3></th>
+                <td><h4><%= @payment.food %></h4></td>
+            </tr>
+            <tr>
+                <th class="pl-5"><h3>娯楽費</h3></th>
+                <td><h4><%= @payment.enjoy %></h4></td>
+            </tr>
+            <tr>
+                <th class="pl-5"><h3>貯金</h3></th>
+                <td><h4><%= @payment.saving %></h4></td>
+            </tr>
+            <tr>
+                <th class="pl-5"><h3>資産運用<h3></th>
+                <td><h4><%= @payment.investing %></h4></td>
+            </tr>
+            <tr>
+                <th class="pl-5"><h3>その他</h3></th>
+                <td><h4><%= @payment.other %></h4></td>
+            </tr>
+            <tr>
+                <th class="pl-5"><h3>合計</h3></th>
+                <td><h4><%= @sum %></h4></td>
+            </tr>
+        </table>
+    </div>
 
-<% if @payment.user_id == current_user.id %>
-<div class="pb-5 pl-5">
-    <%= link_to payment_path(@payment.id), method: :delete, class: 'btn btn-outline-info' do %>
-    データを削除する
-    <% end %>
-</div>
-<% end %>
+    <div class="row">
+        <% if @payment.user_id == current_user.id %>
+        <div class="col-sm-12 pb-5 pl-5">
+            <%= link_to payment_path(@payment.id), method: :delete, class: 'btn btn-outline-info' do %>
+            データを削除する
+            <% end %>
+        </div>
+        <% end %>
 
+        <div class="col-sm-12 pb-5">
+            <%= pie_chart @graph_data, colors: ["#e1c0b6", "#b3d0d7", "#b9d0b1", "#82aaaa", "#afa07f", "#80796c", "#d7cebb"] %>
+        </div>
+    </div>
 
-<div class="pb-5">
-    <%= pie_chart @graph_data, colors: ["#e1c0b6", "#b3d0d7", "#b9d0b1", "#82aaaa", "#afa07f", "#80796c", "#d7cebb"] %>
 </div>

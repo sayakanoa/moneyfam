@@ -78,8 +78,11 @@
           </div>
           </nav>
 
-          <%= flash[:notice] %>
-          <%= flash[:alert] %>
+          <div class="row pl-5">
+            <p id="notice"><%= notice %></p>
+            <p id="alert"><%= alert %></p>
+          </div>
+
       </header>
 
       <main style="background-color:#fffacd">

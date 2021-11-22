@@ -11,4 +11,8 @@ class User < ApplicationRecord
   has_many :buys, dependent: :destroy
 
   enum money_type: { saver: 0, spender: 1 }
+
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :introduction, presence: true
 end

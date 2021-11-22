@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+
   def new
     @event = Event.new
   end
@@ -15,8 +16,12 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user_id = current_user.id
-    @event.save
-    redirect_to events_path(user_id: @event.user_id)
+    if @event.save
+      redirect_to events_path(user_id: @event.user_id), notice: "追加できました"
+    else
+      flash[:alert] = "追加できていません。"
+      render :new
+    end
   end
 
   def destroy
