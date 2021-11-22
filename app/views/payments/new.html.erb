@@ -4,6 +4,11 @@
     <div class="row justify-content-center pb-5">
     <%= form_with model:@payment,  local:true do |f| %>
 
+      <div class="col-12">
+        <%= render 'layouts/error_messages', model: f.object %>
+      </div>
+
+
       <div class="col-12 pt-2">
         <%= f.label :日付 %>
         <%= f.date_select :month, use_month_numbers: true, date_separator: '年', discard_day: true %>月

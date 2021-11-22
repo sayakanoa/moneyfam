@@ -4,6 +4,10 @@
     <div class="row justify-content-center pb-5">
     <%= form_with(model: @event, local: true) do |form| %>
 
+      <div class="col-12">
+        <%= render 'layouts/error_messages', model: form.object %>
+      </div>
+
       <div class="col-12 pt-4">
         <%= form.label :start_time %>
         <%= form.date_select :start_time %>

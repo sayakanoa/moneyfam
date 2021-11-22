@@ -8,9 +8,9 @@ class PostCommentsController < ApplicationController
   end
 
   def create
-    comment = PostComment.new(post_comment_params)
-    comment.user_id = current_user.id
-    if comment.save
+    @post_comment = PostComment.new(post_comment_params)
+    @post_comment.user_id = current_user.id
+    if @post_comment.save
       redirect_to events_path(user_id: comment.event.user_id), notice: "コメントできました"
     else
       @user = User.find_by(params[:event_id])

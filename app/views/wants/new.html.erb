@@ -4,6 +4,10 @@
         <%= form_with model:@want, local:true do |f| %>
 
         <div class="col-12">
+          <%= render 'layouts/error_messages', model: f.object %>
+        </div>
+
+        <div class="col-12">
             <%= f.hidden_field :month, value: @month %>
         </div>
 

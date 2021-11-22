@@ -3,10 +3,16 @@
 
   <div class="row justify-content-center py-3">
 
-    <%= form_with(model: @post_comment, local: true) do |f|%>
+    <%= form_with model:@post_comment, local:true do |f| %>
+
+    <div class="col-12">
+      <%= render 'layouts/error_messages', model: f.object %>
+    </div>
+
     <div class="col-12">
       <%= f.hidden_field :event_id, value: @event.id %>
     </div>
+
     <div class="col-12">
       <%= f.text_area :comment, size: "50x5", placeholder:"コメントをここに記入してください。" %>
     </div>

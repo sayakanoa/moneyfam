@@ -79,3 +79,5 @@ gem 'jquery-rails'
 
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
+
+gem 'rails-i18n'
