@@ -1,6 +1,11 @@
 <div class="container-fluid pt-5">
 
   <div class="row pb-5">
+
+    <div class="offset-4 col-5 pt-4">
+        <%= link_to 'ユーザー情報編集', edit_user_path(current_user.id) %>
+    </div>
+
     <div class="offset-4 col-5 align-self-center pt-4">
         <i class="far fa-hand-point-right"></i>
         <%= link_to events_path(user_id: current_user.id) do %>
