@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :post_comments, only: [:new, :create, :destroy]
   resources :wants
   resources :buys
+  resources :notifications, only: :index
 end

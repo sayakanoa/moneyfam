@@ -22,12 +22,12 @@
 
     <h3 class="text-right"><u>合計金額<%= @sum %>円</u></h3>
 
-    <h4 class="col-5 buy-text pt-5">
+    <h3 class="col-12 buy-text pt-5">
         <i class="fas fa-calculator"></i>
         <u>今月の自由費の予算は<%= @month_enjoy %>円</u>
         <i class="fas fa-calculator"></i>
-    </h4>
+    </h3>
 
     <% @diff= @month_enjoy - @sum %>
-    <h2 class="col-3 bg-light mt-5"><u>差額<%= @diff %>円</u></h2>
+    <h2 class="diff-text offset-1 col-3 bg-light mt-5"><u>差額<%= @diff %>円</u></h2>
 </div>

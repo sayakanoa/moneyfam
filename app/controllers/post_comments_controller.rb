@@ -12,8 +12,11 @@ class PostCommentsController < ApplicationController
   def create
     @post_comment = PostComment.new(post_comment_params)
     @post_comment.user_id = current_user.id
+
+    @event = @post_comment.event
     if @post_comment.save
-      redirect_to events_path(user_id: comment.event.user_id), notice: "コメントできました"
+      @event.create_notification_comment!(current_user, @post_comment.id)
+      redirect_to events_path(user_id: @post_comment.event.user_id), notice: "コメントできました"
     else
       @user = User.find_by(params[:event_id])
       @month = Time.zone.today

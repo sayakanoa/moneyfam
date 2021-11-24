@@ -1,0 +1,31 @@
+<div class="container-fluid py-5">
+
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+    <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+        <div class="offset-2 form-inline">
+            <span>
+                <%= visitor.name %>さんが
+            </span>
+            <% case notification.action %>
+            <% when 'comment' then %>
+                <% if notification.event.user_id == visited.id %>
+                    <div class="text-info">あなたのカレンダー</div>
+                <% else %>
+                    <span>
+                        <%= notification.event.user.name %>さんのカレンダー
+                    </span>
+                <% end %>
+            <span>にコメントしました。</span>
+            <p class="col-9 text-muted">
+                <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
+            </p>
+            <div class="small text-muted text-right">
+                <%= time_ago_in_words(notification.created_at).upcase %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+    </div>
+</div>

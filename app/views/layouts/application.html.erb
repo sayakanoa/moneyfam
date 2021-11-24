@@ -46,6 +46,12 @@
                     </li>
 
                     <li class="nav-list-item">
+                      <%= link_to notifications_path, class: 'nav-link text-dark' do %>
+                      通知機能<i class="far fa-bell"></i>
+                      <% end %>
+                    </li>
+
+                    <li class="nav-list-item">
                       <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
                       ログアウト<i class="fas fa-sign-out-alt"></i>
                       <% end %>
