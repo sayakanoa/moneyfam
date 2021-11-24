@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+  before_action :correct_user, only: [:destroy]
+
   def new
     @payment = Payment.new
   end
@@ -52,8 +54,6 @@ class PaymentsController < ApplicationController
     @sum = @payment.house + @payment.life + @payment.food + @payment.enjoy + @payment.saving + @payment.investing + @payment.other
   end
 
-  def edit; end
-
   def destroy
     payment = Payment.find(params[:id])
     payment.destroy
@@ -65,4 +65,10 @@ class PaymentsController < ApplicationController
   def payment_params
     params.require(:payment).permit(:month, :house, :life, :food, :enjoy, :saving, :investing, :other)
   end
+
+  def correct_user
+    payment = Payment.find(params[:id])
+    redirect_to payments_path(current_user) unless payment.user == current_user
+  end
+
 end

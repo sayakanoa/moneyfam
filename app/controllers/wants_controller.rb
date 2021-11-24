@@ -1,4 +1,6 @@
 class WantsController < ApplicationController
+  before_action :correct_user, only: [:destroy]
+
   def new
     @want = Want.new
     @month = Time.zone.today
@@ -21,10 +23,6 @@ class WantsController < ApplicationController
     end
   end
 
-  def show
-    @want = Want.find(params[:id])
-  end
-
   def destroy
     @want = Want.find(params[:id])
     @want.destroy
@@ -35,5 +33,10 @@ class WantsController < ApplicationController
 
   def want_params
     params.require(:want).permit(:month, :name, :price, :priority, :limit_date)
+  end
+
+  def correct_user
+    want = Want.find(params[:id])
+    redirect_to wants_path(current_user) unless want.user == current_user
   end
 end

@@ -1,4 +1,6 @@
 class PostCommentsController < ApplicationController
+  before_action :correct_user, only: [:destroy]
+
   def new
     @post_comment = PostComment.new
     @user = User.find(params[:user_id])
@@ -31,5 +33,10 @@ class PostCommentsController < ApplicationController
 
   def post_comment_params
     params.require(:post_comment).permit(:event_id, :comment)
+  end
+
+  def correct_user
+    post_comment = PostComment.find(params[:id])
+    redirect_to events_path(user_id: post_comment.event.user_id) unless post_comment.user == current_user
   end
 end

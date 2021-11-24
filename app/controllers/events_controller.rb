@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  before_action :correct_user, only: [:destroy]
+
   def new
     @event = Event.new
   end
@@ -35,4 +37,10 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:title, :body, :start_time)
   end
+
+  def correct_user
+    event = Event.find(params[:id])
+    redirect_to events_path(current_user) unless event.user == current_user
+  end
+
 end
