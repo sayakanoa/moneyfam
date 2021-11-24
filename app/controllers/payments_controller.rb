@@ -21,7 +21,13 @@ class PaymentsController < ApplicationController
     @lists = { id: [], month: [], house: [], life: [], food: [], enjoy: [], saving: [], investing: [], other: [],
                sum: [] }
     @user = User.find_by(id: params[:user_id])
-    @month = Time.zone.today
+    if params[:month]
+      #params[:month]を文字列から日付型に変換する
+      @month = Date.parse(params[:month])
+    else
+      @month = Time.zone.today
+    end
+
     # 器に入れるデータ,１年ごとの表示,月順
     @payments = @user.payments.where(month: @month.all_year).order(:month)
     @payments.each do |pt|

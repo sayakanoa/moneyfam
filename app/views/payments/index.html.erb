@@ -2,7 +2,9 @@
 <h1 class="text-center">今年の家計簿</h1>
 
 
-        <%= link_to "前年", payments_path(user: params[:id], month: @month.prev_year) %>
+        <%= link_to payments_path(user_id: params[:user_id], month: @month.prev_year) do %>
+        <button class="btn btn-outline-dark">前年の家計簿はこちら</button>
+        <% end %>
 
         <table class="table">
             <tr>
