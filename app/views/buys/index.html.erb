@@ -1,11 +1,15 @@
 <div class="container py-5">
 
+    <% if @month_enjoy.blank? %>
+    <p>先に今月の家計簿を登録してください。<p>
+    <% else %>
 
     <h1 class="buy-title py-5">
         今月の購入リスト
         <i class="fas fa-shopping-cart"></i>
     </h1>
 
+    <% @month_enjoy = current_user.payments.find_by(month: @month.all_month).enjoy %>
     <table class="table">
         <tr>
             <th><h3>商品名</h3></th>
@@ -30,4 +34,6 @@
 
     <% @diff= @month_enjoy - @sum %>
     <h2 class="diff-text offset-1 col-3 bg-light mt-5"><u>差額<%= @diff %>円</u></h2>
+
+    <% end %>
 </div>

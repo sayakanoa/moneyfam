@@ -45,9 +45,14 @@
                       <% end %>
                     </li>
 
+
                     <li class="nav-list-item">
                       <%= link_to notifications_path, class: 'nav-link text-dark' do %>
-                      通知機能<i class="far fa-bell"></i>
+                          <% if unchecked_notifications.any? %>
+                            通知機能<i class="far fa-bell" style="color:#ffff00"></i>
+                          <% else %>
+                            通知機能<i class="far fa-bell"></i>
+                          <% end %>
                       <% end %>
                     </li>
 
