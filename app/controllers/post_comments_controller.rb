@@ -15,7 +15,7 @@ class PostCommentsController < ApplicationController
 
     @event = @post_comment.event
     if @post_comment.save
-      @event.create_notification_comment!(current_user, @post_comment.id)
+      @event.save_notification_comment!(current_user, @post_comment.id, @post_comment.event.user.id)
       redirect_to events_path(user_id: @post_comment.event.user_id), notice: "コメントできました"
     else
       @user = User.find_by(params[:event_id])

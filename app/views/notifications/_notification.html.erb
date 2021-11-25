@@ -12,10 +12,6 @@
             <% when 'comment' then %>
                 <% if notification.event.user_id == visited.id %>
                     <div class="text-info">あなたのカレンダー</div>
-                <% else %>
-                    <span>
-                        <%= notification.event.user.name %>さんのカレンダー
-                    </span>
                 <% end %>
             <span>にコメントしました。</span>
             <p class="col-9 text-muted">

@@ -1,7 +1,7 @@
 <div class="container py-5">
 
-    <% if @month_enjoy.blank? %>
-    <p>先に今月の家計簿を登録してください。<p>
+    <% if @month_enjoy == "未登録です。" %>
+    <p class="py-5 text-center">先に今月の家計簿を登録してください。<p>
     <% else %>
 
     <h1 class="buy-title py-5">
