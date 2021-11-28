@@ -51,7 +51,7 @@ class PaymentsController < ApplicationController
       家賃: @payment.house,
       生活費: @payment.life,
       食費: @payment.food,
-      交際費: @payment.enjoy,
+      自由費: @payment.enjoy,
       貯金: @payment.saving,
       資産運用: @payment.investing,
       その他: @payment.other
