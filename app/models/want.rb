@@ -4,6 +4,7 @@ class Want < ApplicationRecord
 
   enum priority: { low: 0, middle: 1, high: 2 }
 
+  #購入検討リストから購入したものを除く
   scope :excepted_bought, -> { left_joins(:buy).where(buys: { id: nil }) }
 
   validates :name, presence: true

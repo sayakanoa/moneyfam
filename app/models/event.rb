@@ -15,7 +15,7 @@ class Event < ApplicationRecord
       action: 'comment'
     )
 
-    #通知を送る相手と通知を受け取る相手が同じであれば（つまり自分がコメントした時に自分に通知を送らないようにする設定）
+    #通知を送る相手と通知を受け取る相手が同じであれば通知チェックを済みにする（つまり自分がコメントした時に自分に通知を送らないようにする設定）
     if notification.visitor_id == notification.visited_id
       notification.checked = true
     end
