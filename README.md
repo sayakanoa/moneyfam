@@ -38,5 +38,5 @@ https://docs.google.com/spreadsheets/d/1qYAJBzZ_6eYpYN5aWx3SHifpGYnTuRYE05_SPIQ4
 - IDE：Cloud9
 
 ## 使用素材
--　https://www.shutterstock.com/ja/
--　https://www.designevo.com/
+- https://www.shutterstock.com/ja/
+- https://www.designevo.com/
