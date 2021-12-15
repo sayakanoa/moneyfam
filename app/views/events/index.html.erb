@@ -24,7 +24,7 @@
       <% end %>
     <% end %>
 
-    <% if @events.present? %>
+    <% if @event_month.present? %>
     <%= link_to new_post_comment_path(user_id: @user.id), class: 'btn btn-outline-success' do  %>
     コメントの追加
     <% end %>
